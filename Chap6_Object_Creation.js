@@ -43,6 +43,7 @@ alert(person1 instanceof Person);
 //constructor called as a function
 
 Person("Greg",22,"Doctor");// adds to window
+alert(window.job);
 window.sayName();
 
 
@@ -54,6 +55,26 @@ o.sayName();
 // problem with constructor pattern is that their functions are created for each object which is waste of memory.
 // To solve it we can define them outside the constructor and refer them inside the constructor , but it pollutes the global scope.
 
+//The problems with constructors are addressed with prototype
+
+function Person(){
+
+}
+
+
+Person.prototype.name="Nicholas";
+Person.prototype.age=29;
+Person.prototype.job="Software Engineer";
+Person.prototype.sayName=function(){
+    alert(this.name);
+};
+
+var person1=new Person();
+var person2=new Person();
+
+person1.name="Greg";
+alert(person1.name);//"Greg" from instance
+alert(person2.name);//"Nicholas" from prototype
 
 
 
